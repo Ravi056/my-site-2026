@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ravi Adhikari | All Blogs</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">
+    <a href="index.html"><h1 id="typed-name"></h1></a>
+  </div>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+    <a href="contact.html">Contact Me</a>
+  </nav>
+</header>
+<main class="content-wrapper">
+<section class="hero">
+  <h2 class="hero-title">All Posts</h2>
+  <p class="hero-subtitle">Browse all posts I’ve shared so far.</p>
+</section>
+
+<section class="blogs-section">
+  <div class="posts-grid" id="all-posts"></div>
+</section>
+</main>
+<footer>
+  <p>© 2026 Ravi Adhikari. Version 1.0. All Rights Reserved.</p>
+  <p id="nepaliDateTime"></p>
+</footer>
+
+<script src="posts.js"></script>
+
+<script>
+// Typing effect for logo
+const text = "Ravi Adhikari";
+const typedName = document.getElementById("typed-name");
+let index = 0;
+function type(){if(index<text.length){typedName.innerHTML+=text.charAt(index);index++;setTimeout(type,150);}}
+window.onload = type;
+
+// Render all posts from posts.js
+const allPostsContainer = document.getElementById("all-posts");
+posts.sort((a,b)=> new Date(b.date)-new Date(a.date)).forEach(post=>{
+  const card = document.createElement("div");
+  card.className="post-card";
+  card.innerHTML = `<a href="${post.link}">
+                      <img src="${post.img}" alt="${post.title}">
+                      <div class="post-content">
+                        <h3>${post.title}</h3>
+                        <p>${post.desc}</p>
+                        <small>${post.date}</small>
+                      </div>
+                    </a>`;
+  allPostsContainer.appendChild(card);
+});
+
+// Nepali date & time
+function getNepaliDateTime(){
+  const now=new Date();
+  const nepTimeOptions={timeZone:'Asia/Kathmandu',hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'};
+  const nepTime=now.toLocaleTimeString('en-US',nepTimeOptions);
+  const bsYear=now.getFullYear()+57;
+  const bsMonth=now.getMonth()+9>12?now.getMonth()-3:now.getMonth()+9;
+  const bsDay=now.getDate();
+  const nepaliDate=`${bsDay.toString().padStart(2,'0')}/${bsMonth.toString().padStart(2,'0')}/${bsYear}`;
+  document.getElementById("nepaliDateTime").innerText=`Nepali Date: ${nepaliDate} | Time: ${nepTime}`;
+}
+setInterval(getNepaliDateTime,1000);
+getNepaliDateTime();
+</script>
+
+</body>
+</html>

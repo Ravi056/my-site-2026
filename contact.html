@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ravi Adhikari | Contact Me</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="content-wrapper">
+<!-- Header -->
+<header class="header">
+  <div class="logo">
+    <a href="index.html"><h1 id="typed-name"></h1></a>
+  </div>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+    <a href="contact.html">Contact Me</a>
+  </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <h2 class="hero-title">Contact Me</h2>
+  <p class="hero-subtitle">If you want to reach me, you can use the following contact details:</p>
+</section>
+
+<!-- Contact Info Section -->
+<section class="contact-info">
+  <div class="cards-grid">
+    <div class="card">
+      <h3>Email</h3>
+      <p>your-email@example.com</p>
+    </div>
+    <div class="card">
+      <h3>Facebook</h3>
+      <p>facebook.com/yourprofile</p>
+    </div>
+    <div class="card">
+      <h3>Instagram</h3>
+      <p>instagram.com/yourprofile</p>
+    </div>
+    <div class="card">
+      <h3>LinkedIn</h3>
+      <p>linkedin.com/in/yourprofile</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- Footer with Nepali Date & Time -->
+<footer>
+  <p>© 2026 Ravi Adhikari. Version 1.0. All Rights Reserved.</p>
+  <p id="nepaliDateTime"></p>
+</footer>
+
+<script>
+// Typing effect for logo
+const text = "Ravi Adhikari";
+const typedName = document.getElementById("typed-name");
+let index = 0;
+function type() {
+  if (index < text.length) {
+    typedName.innerHTML += text.charAt(index);
+    index++;
+    setTimeout(type, 150);
+  }
+}
+window.onload = type;
+
+// Nepali date & time (approximate BS)
+function getNepaliDateTime() {
+  const now = new Date();
+  const nepTimeOptions = { timeZone: 'Asia/Kathmandu', hour12:false, hour:'2-digit', minute:'2-digit', second:'2-digit' };
+  const nepTime = now.toLocaleTimeString('en-US', nepTimeOptions);
+
+  // Approximate BS date
+  const bsYear = now.getFullYear() + 57;
+  const bsMonth = now.getMonth() + 9 > 12 ? now.getMonth() - 3 : now.getMonth() + 9;
+  const bsDay = now.getDate();
+  const nepaliDate = `${bsDay.toString().padStart(2,'0')}/${bsMonth.toString().padStart(2,'0')}/${bsYear}`;
+
+  document.getElementById("nepaliDateTime").innerText = `Nepali Date: ${nepaliDate} | Time: ${nepTime}`;
+}
+setInterval(getNepaliDateTime, 1000);
+getNepaliDateTime();
+</script>
+
+</body>
+</html>

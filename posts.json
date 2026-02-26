@@ -1,0 +1,34 @@
+const posts = [
+  {
+    title: "My First Blog",
+    desc: "This is a sample post description...",
+    img: "https://via.placeholder.com/400x250",
+    views: 200,
+    date: "2026-02-26",
+    link: "blog1.html"
+  },
+  {
+    title: "Learning HTML & CSS",
+    desc: "Tips and tricks for coding...",
+    img: "https://via.placeholder.com/400x250",
+    views: 300,
+    date: "2026-02-25",
+    link: "blog2.html"
+  },
+  {
+    title: "Responsive Design Guide",
+    desc: "Make your site mobile-friendly...",
+    img: "https://via.placeholder.com/400x250",
+    views: 250,
+    date: "2026-02-24",
+    link: "blog3.html"
+  },
+  {
+    title: "Netlify CMS Integration",
+    desc: "Easily manage posts without coding...",
+    img: "https://via.placeholder.com/400x250",
+    views: 350,
+    date: "2026-02-23",
+    link: "blog4.html"
+  }
+];
